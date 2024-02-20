@@ -1,0 +1,9 @@
+# outputs
+/node_modules
+/dist
+/coverage
+
+
+# custom settings
+/.idea
+/.vscode
