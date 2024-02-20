@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
+import { FixedSizeList as List } from 'react-window';
 import { GetUserResponse, User, getUser } from '../../api/user';
 import { useInViewport } from '../../hooks/window';
 import Pagination from '../Pagination';
@@ -140,12 +141,30 @@ export const Mobile: React.FC = () => {
 
     return (
         <div className="p-8 flex flex-col">
-            {result.users.map((user, index) => (
-                <UserItem user={user} key={index} />
-            ))}
-            <div className="h-4" ref={ref}>
-                {isLoading ? <Spinner /> : null}
-            </div>
+            <List
+                height={window.innerHeight}
+                itemCount={result.users.length}
+                itemSize={100}
+                width="100%"
+                className="virtual-list"
+            >
+                {({
+                    index,
+                    style,
+                }: {
+                    index: number;
+                    style: React.CSSProperties | undefined;
+                }) => {
+                    return (
+                        <div key={index} style={style}>
+                            <UserItem user={result.users[index]} />
+                            <div className="py-8" ref={ref}>
+                                {isLoading ? <Spinner /> : null}
+                            </div>
+                        </div>
+                    );
+                }}
+            </List>
         </div>
     );
 };
