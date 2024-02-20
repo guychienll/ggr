@@ -2,24 +2,25 @@
 
 ## Table of Contents
 
-- [README](#readme)
-  - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
-  - [Getting Started](#getting-started)
-    - [Clone the repository](#clone-the-repository)
-    - [Install dependencies](#install-dependencies)
-    - [Run the application](#run-the-application)
-      - [Build the application](#build-the-application)
-        - [development build](#development-build)
-        - [production build](#production-build)
-  - [Storybook](#storybook)
+-   [README](#readme)
+    -   [Table of Contents](#table-of-contents)
+    -   [Demo Links](#demo-links)
+    -   [Architecture](#architecture)
+    -   [Prerequisites](#prerequisites)
+    -   [Getting Started](#getting-started)
+        -   [Clone the repository](#clone-the-repository)
+        -   [Install dependencies](#install-dependencies)
+        -   [Run the application](#run-the-application)
+            -   [Build the application](#build-the-application)
+                -   [development build](#development-build)
+                -   [production build](#production-build)
+    -   [Storybook](#storybook)
 
 ## Demo Links
 
-- [Demo](#)
-- [Storybook](#)
-- [Github](#)
-
+-   [Demo](#)
+-   [Storybook](#)
+-   [Github](#)
 
 ## Architecture
 
@@ -54,7 +55,7 @@ flowchart TD
 ## Prerequisites
 
 | Dependency | Version          |
-|------------|------------------|
+| ---------- | ---------------- |
 | node       | v18.17 or higher |
 | npm        | v9.6.7 or higher |
 

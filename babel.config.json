@@ -1,17 +1,17 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "modules": "auto",
-        "useBuiltIns": "usage",
-        "corejs": {
-          "version": "3.34",
-          "proposals": true
-        }
-      }
-    ],
-    "@babel/preset-typescript",
-    "@babel/preset-react"
-  ]
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "modules": "auto",
+                "useBuiltIns": "usage",
+                "corejs": {
+                    "version": "3.34",
+                    "proposals": true
+                }
+            }
+        ],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+    ]
 }

@@ -15,6 +15,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:storybook/recommended',
+    'plugin:react-hooks/recommended',
   ],
   rules: {},
   overrides: [
