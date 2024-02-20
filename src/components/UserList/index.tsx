@@ -57,11 +57,14 @@ export const Desktop: React.FC = () => {
     return (
         <div className="p-8 flex flex-col">
             <Pagination
-                limitation={{
-                    min: 1,
-                    max: result.total / LIMIT,
+                onNextPage={() => {
+                    setPage((prev) =>
+                        prev >= result.total / LIMIT ? prev : prev + 1,
+                    );
                 }}
-                setPage={setPage}
+                onPreviousPage={() => {
+                    setPage((prev) => (prev <= 1 ? prev : prev - 1));
+                }}
             >
                 Page ( {page} / {result.total / LIMIT} )
             </Pagination>
@@ -70,11 +73,14 @@ export const Desktop: React.FC = () => {
             ))}
             <div className="h-8">{isLoading ? <Spinner /> : null}</div>
             <Pagination
-                limitation={{
-                    min: 1,
-                    max: result.total / LIMIT,
+                onNextPage={() => {
+                    setPage((prev) =>
+                        prev >= result.total / LIMIT ? prev : prev + 1,
+                    );
                 }}
-                setPage={setPage}
+                onPreviousPage={() => {
+                    setPage((prev) => (prev <= 1 ? prev : prev - 1));
+                }}
             >
                 Page ( {page} / {result.total / LIMIT} )
             </Pagination>

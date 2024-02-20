@@ -3,25 +3,21 @@ import * as React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 type PaginationProps = {
-    limitation: {
-        min: number;
-        max: number;
-    };
     children: React.ReactNode;
-    setPage: React.Dispatch<React.SetStateAction<number>>;
+    onNextPage: () => void;
+    onPreviousPage: () => void;
 };
 
 const Pagination: React.FC<PaginationProps> = ({
     children,
-    setPage,
-    limitation,
+    onNextPage,
+    onPreviousPage,
 }) => {
-    const { min, max } = limitation;
     return (
         <div className="items-center self-end hidden md:flex">
             <button
                 onClick={_.debounce(() => {
-                    setPage((prev) => (prev <= min ? prev : prev - 1));
+                    onPreviousPage();
                 }, 300)}
             >
                 <IoIosArrowBack />
@@ -29,7 +25,7 @@ const Pagination: React.FC<PaginationProps> = ({
             <span>{children}</span>
             <button
                 onClick={_.debounce(() => {
-                    setPage((prev) => (prev >= max ? prev : prev + 1));
+                    onNextPage();
                 }, 300)}
             >
                 <IoIosArrowForward />
