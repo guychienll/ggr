@@ -6,11 +6,10 @@
 }
 
 @media screen and (max-width: 767px) {
-    body::-webkit-scrollbar {
-        display: none;
-    }
-
-    .virtual-list::-webkit-scrollbar {
-        display: none;
+    body {
+        overflow-y: hidden;
+        .virtual-list::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

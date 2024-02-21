@@ -4,19 +4,14 @@ export const useDevice = () => {
     const [device, setDevice] = useState('');
 
     useLayoutEffect(() => {
-        const listener = (e: Event) => {
-            const window = e.target as Window;
+        const listener = () => {
             if (window.innerWidth >= 768) {
                 setDevice('desktop');
             } else {
                 setDevice('mobile');
             }
         };
-        if (window.innerWidth >= 768) {
-            setDevice('desktop');
-        } else {
-            setDevice('mobile');
-        }
+        listener();
         window.addEventListener('resize', listener);
         return () => {
             window.removeEventListener('resize', listener);

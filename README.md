@@ -54,10 +54,10 @@ flowchart TD
 
 ## Prerequisites
 
-| Dependency | Version          |
-| ---------- | ---------------- |
-| node       | v18.17 or higher |
-| npm        | v9.6.7 or higher |
+| Dependency | Version            |
+| ---------- | ------------------ |
+| node       | v20.10.0 or higher |
+| npm        | v9.6.7 or higher   |
 
 ## Getting Started
 

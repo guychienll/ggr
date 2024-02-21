@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { FixedSizeList as List } from 'react-window';
+import { FixedSizeList as List, ListChildComponentProps } from 'react-window';
 import { GetUserResponse, User, getUser } from '../../api/user';
 import { useInViewport } from '../../hooks/window';
 import Pagination from '../Pagination';
 import Spinner from '../Spinner';
 
-const UserItem = ({ user }: { user: User }) => {
+type UserItemProps = {
+    user: User;
+};
+
+const UserItem = (props: UserItemProps) => {
+    const { user } = props;
     return (
         <div className="flex flex-col px-2 py-4 rounded-md my-4 bg-[#9E434C] ">
             <div>
@@ -16,6 +21,9 @@ const UserItem = ({ user }: { user: User }) => {
         </div>
     );
 };
+
+const ERROR_MESSAGE =
+    'Oops ! Something bad happened!\nPlease try to reload page or contact customer service !';
 
 export const Desktop: React.FC = () => {
     const LIMIT = 5;
@@ -36,7 +44,7 @@ export const Desktop: React.FC = () => {
                 );
             } catch (e) {
                 console.error(e);
-                setError('Oops ! Something Bad Happened !');
+                setError(ERROR_MESSAGE);
             } finally {
                 setIsLoading(false);
             }
@@ -46,7 +54,7 @@ export const Desktop: React.FC = () => {
     if (error) {
         return (
             <div className="p-8 flex flex-col">
-                <h1>{error}</h1>
+                <pre>{error}</pre>
             </div>
         );
     }
@@ -114,13 +122,14 @@ export const Mobile: React.FC = () => {
                     limit: LIMIT,
                     skip: (page - 1) * LIMIT,
                 });
+
                 setResult((prev) => ({
                     ...result,
                     users: [...(prev ? prev.users : []), ...result.users],
                 }));
             } catch (e) {
                 console.error(e);
-                setError('Oops ! Something Bad Happened!');
+                setError(ERROR_MESSAGE);
             } finally {
                 setIsLoading(false);
             }
@@ -130,7 +139,7 @@ export const Mobile: React.FC = () => {
     if (error) {
         return (
             <div className="p-8 flex flex-col">
-                <h1>{error}</h1>
+                <pre>{error}</pre>
             </div>
         );
     }
@@ -148,13 +157,7 @@ export const Mobile: React.FC = () => {
                 width="100%"
                 className="virtual-list"
             >
-                {({
-                    index,
-                    style,
-                }: {
-                    index: number;
-                    style: React.CSSProperties | undefined;
-                }) => {
+                {({ index, style }: ListChildComponentProps) => {
                     return (
                         <div key={index} style={style}>
                             <UserItem user={result.users[index]} />
