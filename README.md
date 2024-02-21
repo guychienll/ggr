@@ -18,9 +18,8 @@
 
 ## Demo Links
 
--   [Demo](#)
--   [Storybook](#)
--   [Github](#)
+-   [Demo](https://ggr-guychienll.vercel.app/)
+-   [Github](https://github.com/guychienll/ggr)
 
 ## Architecture
 
@@ -64,7 +63,7 @@ flowchart TD
 ### Clone the repository
 
 ```shell
-git clone
+git clone git@github.com:guychienll/ggr.git
 ```
 
 ### Install dependencies
